@@ -184,6 +184,5 @@ int main() {
 		}
 		arr.clearMark();
 	}
-	arr.out.close();
 	return 0;
 }
