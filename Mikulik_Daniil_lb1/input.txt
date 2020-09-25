@@ -1,0 +1,11 @@
+A
+(BAA)
+(B(BAA)A)
+asdasdasd
+(B(BAA)B())
+(B(B(BA(BAA))A)(BA(BAA)))
+A(B(B(BA(BAA))A)(BA(BAA)))
+(B(B(BA(BAA))A)(BA(BAA))
+(B(B(BA(BAA))A)(BA(BAA))))
+asd(B(B(BA(BAA))A)(BA(BAA)))
+(A(B(BA(BAA))A)(BA(BAA)))
