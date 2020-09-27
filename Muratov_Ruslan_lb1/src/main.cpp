@@ -4,15 +4,13 @@
 
 using namespace std;
 
-// brackets = A | B | (brackets brackets)
-
 enum Error {
   FILE_NOT_OPEN,
   FILE_IS_EMPTY,
-  INVALID_CHAR, // (brackets@
-  INCOMPLETE_BRACKETS, // (brackets) or ()
-  BRACKETS_NOT_CLOSE, // (brackets brackets
-  EXTRA_CHAR // (brackets brackets)~
+  INVALID_CHAR,
+  INCOMPLETE_BRACKETS,
+  BRACKETS_NOT_CLOSE,
+  EXTRA_CHAR
 };
 
 void passLineTail(ifstream& inFile);
@@ -110,64 +108,69 @@ void getError(Error e, ostream& outFile) {
 }
 
 bool areBrackets(ifstream& inFile, ofstream& outFile, char curSymbol, uint16_t recDepth) {
+  char startSymbol = curSymbol;
   outFile << curSymbol;
   printIndent(recDepth);
-  cout << curSymbol << '\n';
+  cout << recDepth << " Start " << "areBrackets(\'" << startSymbol << "\')\n";
   if ((curSymbol == '(') || (curSymbol == ')') ||
       (curSymbol == 'A') || (curSymbol == 'B')) {
     if ((curSymbol == 'A') || (curSymbol == 'B')) {
+      printIndent(recDepth);
+      cout << recDepth << " End " << "areBrackets(\'" << startSymbol << "\')\n";
       return true;
     } else if (curSymbol == '(') {
-      // brackets = (brackets brackets)
       if ((curSymbol = inFile.get()) != '\n') {
         if (areBrackets(inFile, outFile, curSymbol, recDepth + 1)) {
-          // first "brackets" is valid
           if ((curSymbol = inFile.get()) != '\n') {
             if (areBrackets(inFile, outFile, curSymbol, recDepth + 1)) {
-              // second "brackets" is valid
               if ((curSymbol = inFile.get()) != '\n') {
                 outFile << curSymbol;
                 printIndent(recDepth);
-                cout << curSymbol << '\n';
                 if (curSymbol == ')') {
+                  cout << recDepth << " End " << "areBrackets(\'" << startSymbol << "\')\n";
                   return true;
                 } else {
-                  // Невалидный символ: #, $, % и т.д.
                   getError(INVALID_CHAR, outFile);
+                  cout << recDepth << " End " << "areBrackets(\'" << startSymbol << "\')\n";
                   return false;
                 }
               } else {
-                // Незакрытая скобка: (AA\n or (AA*eof*
                 getError(BRACKETS_NOT_CLOSE, outFile);
+                printIndent(recDepth);
+                cout << recDepth << " End " << "areBrackets(\'" << startSymbol << "\')\n";
                 return false;
               }
             } else {
+              printIndent(recDepth);
+              cout << recDepth << " End " << "areBrackets(\'" << startSymbol << "\')\n";
               return false;
             }
           } else {
-            // Незакрытая скобка: (A\n or ((BB)\n
+            printIndent(recDepth);
+            cout << recDepth << " End " << "areBrackets(\'" << startSymbol << "\')\n";
             getError(BRACKETS_NOT_CLOSE, outFile);
             return false;
           }
         } else {
+          printIndent(recDepth);
+          cout << recDepth << " End " << "areBrackets(\'" << startSymbol << "\')\n";
           return false;
         }
       } else {
-        // Незакрытая скобка: (\n
+        printIndent(recDepth);
+        cout << recDepth << " End " << "areBrackets(\'" << startSymbol << "\')\n";
         getError(BRACKETS_NOT_CLOSE, outFile);
         return false;
       }
     } else {
-      // curSymbol == ')'
-      // Неполная скобка, так как если скобка полная,
-      // то алгоритм дойдет до конца и вернет true.
-      // Если последовательность валидная,
-      // то на вход функции никогда не придет символ ')'
+      printIndent(recDepth);
+      cout << recDepth << " End " << "areBrackets(\'" << startSymbol << "\')\n";
       getError(INCOMPLETE_BRACKETS, outFile);
       return false;
     }
   } else {
-    // Невалидный символ: #, $, % и т.д.
+    printIndent(recDepth);
+    cout << recDepth << " End " << "areBrackets(\'" << startSymbol << "\')\n";
     getError(INVALID_CHAR, outFile);
     return false;
   }
