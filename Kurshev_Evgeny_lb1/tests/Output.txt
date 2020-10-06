@@ -1,0 +1,107 @@
+"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA":
+Error! An unknown symbol has been encountered!
+
+"BBBBBBBBB":
+Error! An unknown symbol has been encountered!
+
+"3+7*5-4":
+Current symbol: numeral "3"
+Current symbol: operation sign "+"
+Current symbol: numeral "7"
+Current symbol: operation sign "*"
+Current symbol: numeral "5"
+Current symbol: operation sign "-"
+Current symbol: numeral "4"
+Wow! Expression "3+7*5-4" is a constant expression!
+
+"333":
+Current symbol: numeral "3"
+Current symbol: numeral "3"
+Current symbol: numeral "3"
+Wow! Expression "333" is a constant expression!
+
+"3+6+8-2843989*849023-5":
+Current symbol: numeral "3"
+Current symbol: operation sign "+"
+Current symbol: numeral "6"
+Current symbol: operation sign "+"
+Current symbol: numeral "8"
+Current symbol: operation sign "-"
+Current symbol: numeral "2"
+Current symbol: numeral "8"
+Current symbol: numeral "4"
+Current symbol: numeral "3"
+Current symbol: numeral "9"
+Current symbol: numeral "8"
+Current symbol: numeral "9"
+Current symbol: operation sign "*"
+Current symbol: numeral "8"
+Current symbol: numeral "4"
+Current symbol: numeral "9"
+Current symbol: numeral "0"
+Current symbol: numeral "2"
+Current symbol: numeral "3"
+Current symbol: operation sign "-"
+Current symbol: numeral "5"
+Wow! Expression "3+6+8-2843989*849023-5" is a constant expression!
+
+"3+7*5-4":
+Current symbol: numeral "3"
+Current symbol: operation sign "+"
+Current symbol: numeral "7"
+Current symbol: operation sign "*"
+Current symbol: numeral "5"
+Current symbol: operation sign "-"
+Current symbol: numeral "4"
+Wow! Expression "3+7*5-4" is a constant expression!
+
+"8****************":
+Current symbol: numeral "8"
+Current symbol: operation sign "*"
+Current symbol: operation sign "*"
+Error! Two signs of operation in a row!
+
+"8+39*j-0320+12":
+Current symbol: numeral "8"
+Current symbol: operation sign "+"
+Current symbol: numeral "3"
+Current symbol: numeral "9"
+Current symbol: operation sign "*"
+Current symbol: unknown symbol "j"
+Error! An unknown symbol has been encountered!
+
+"23456+":
+Current symbol: numeral "2"
+Current symbol: numeral "3"
+Current symbol: numeral "4"
+Current symbol: numeral "5"
+Current symbol: numeral "6"
+Current symbol: operation sign "+"
+Error! The expression ends with an operation character!
+
+"12+++----12":
+Current symbol: numeral "1"
+Current symbol: numeral "2"
+Current symbol: operation sign "+"
+Current symbol: operation sign "+"
+Error! Two signs of operation in a row!
+
+"12--12+3289-22":
+Current symbol: numeral "1"
+Current symbol: numeral "2"
+Current symbol: operation sign "-"
+Current symbol: operation sign "-"
+Error! Two signs of operation in a row!
+
+"-12+34":
+Error! An unknown symbol has been encountered!
+
+"122*1+":
+Current symbol: numeral "1"
+Current symbol: numeral "2"
+Current symbol: numeral "2"
+Current symbol: operation sign "*"
+Current symbol: numeral "1"
+Current symbol: operation sign "+"
+Error! The expression ends with an operation character!
+
