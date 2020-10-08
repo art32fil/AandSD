@@ -204,7 +204,6 @@ void output_recursion(const int level, const int lenght, const int k) {
 	cout << "tree depth level = " << level << " lenght = " << lenght << " current k = " << k << endl;
 }
 
-int i = 0;
 
 short Length(const binTree* tree) {
 	int k = 0;
