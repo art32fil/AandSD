@@ -1,0 +1,11 @@
+A
+ABBA
+A(B)
+A{AB([B]A)}B
+ABBa
+A{B[A)}
+B[]A(A)
+A(B)[A{B}
+
+A))
+B[
