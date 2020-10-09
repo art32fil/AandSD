@@ -1,0 +1,106 @@
+String #1
+Error!	Empty string.
+ is NOT a bracket.
+
+String #2
+Error!	Non-permitted symbol.
+A is NOT a bracket.
+
+String #3
+Symbol: [	Recursion depth is: 0
+Symbol: -	Recursion depth is: 1
+Symbol: A	Recursion depth is: 1
+Error!	Expected '0' or '{' symbol.
+[-A] is NOT a bracket.
+
+String #4
+Symbol: +	Recursion depth is: 0
+Error!	Unexpected sequence.
+++ is NOT a bracket.
+
+String #5
+Symbol: -	Recursion depth is: 0
+Error!	Unexpected sequence.
+--- is NOT a bracket.
+
+String #6
+Symbol: {	Recursion depth is: 0
+Error!	Expected '+' or '[' symbol.
+{ is NOT a bracket.
+
+String #7
+Symbol: {	Recursion depth is: 0
+Symbol: }	Recursion depth is: 1
+Error!	Expected '+' or '[' symbol.
+{} is NOT a bracket.
+
+String #8
+Symbol: {	Recursion depth is: 0
+Symbol: [	Recursion depth is: 1
+Symbol: }	Recursion depth is: 2
+Error!	Expected '-' or '(' symbol.
+{[} is NOT a bracket.
+
+String #9
+Symbol: (	Recursion depth is: 0
+Symbol: 0	Recursion depth is: 1
+Error!	Expected '+' or '[' symbol.
+(0 is NOT a bracket.
+
+String #10
+Symbol: {	Recursion depth is: 0
+Symbol: +	Recursion depth is: 1
+Symbol: -	Recursion depth is: 1
+Error!	Expected '}' symbol.
+{+- is NOT a bracket.
+
+String #11
+Symbol: 0	Recursion depth is: 0
+0 is a bracket.
+
+String #12
+Symbol: [	Recursion depth is: 0
+Symbol: -	Recursion depth is: 1
+Symbol: {	Recursion depth is: 1
+Symbol: [	Recursion depth is: 2
+Symbol: -	Recursion depth is: 3
+Symbol: {	Recursion depth is: 3
+Symbol: [	Recursion depth is: 4
+Symbol: -	Recursion depth is: 5
+Symbol: {	Recursion depth is: 5
+Symbol: [	Recursion depth is: 6
+Symbol: -	Recursion depth is: 7
+Symbol: {	Recursion depth is: 7
+Symbol: [	Recursion depth is: 8
+Symbol: -	Recursion depth is: 9
+Symbol: {	Recursion depth is: 9
+Symbol: [	Recursion depth is: 10
+Symbol: -	Recursion depth is: 11
+Symbol: {	Recursion depth is: 11
+Symbol: [	Recursion depth is: 12
+Symbol: -	Recursion depth is: 13
+Symbol: {	Recursion depth is: 13
+Symbol: +	Recursion depth is: 14
+Symbol: -	Recursion depth is: 14
+Symbol: }	Recursion depth is: 13
+Symbol: ]	Recursion depth is: 12
+Symbol: -	Recursion depth is: 12
+Symbol: }	Recursion depth is: 11
+Symbol: ]	Recursion depth is: 10
+Symbol: -	Recursion depth is: 10
+Symbol: }	Recursion depth is: 9
+Symbol: ]	Recursion depth is: 8
+Symbol: -	Recursion depth is: 8
+Symbol: }	Recursion depth is: 7
+Symbol: ]	Recursion depth is: 6
+Symbol: -	Recursion depth is: 6
+Symbol: }	Recursion depth is: 5
+Symbol: ]	Recursion depth is: 4
+Symbol: -	Recursion depth is: 4
+Symbol: }	Recursion depth is: 3
+Symbol: ]	Recursion depth is: 2
+Symbol: -	Recursion depth is: 2
+Symbol: }	Recursion depth is: 1
+Symbol: ]	Recursion depth is: 0
+[-{[-{[-{[-{[-{[-{[-{+-}]-}]-}]-}]-}]-}]-}] is a bracket.
+
