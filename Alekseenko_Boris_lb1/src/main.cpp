@@ -4,11 +4,11 @@ using namespace std;
 #define ull unsigned long long
 
 
-ull bci(ull m, int n, int depth)
-{
+ull binomical(ull m, ull n, int& depth) {
+    depth += 1;
     if ((m == 0 && n > 0) || (m == n && n >= 0)) return 1;
     if (m > n && n >= 0) return 0;
-    return bci(m - 1, n - 1, depth + 1) + bci(m, n - 1, depth + 1);
+    return binomical(m - 1, n - 1, depth) + binomical(m, n - 1, depth);
 }
 
 int main()
@@ -22,11 +22,19 @@ int main()
         return 0;
     }
     ofstream fout("out.txt");
-    ull n, m;
-    fin >> n >> m;
-    int depth;
-    fout << endl << bci(n, m, depth) << endl;
-    fout << "Depth: " << depth;
+    ull n;
+    ull m;
+    string str;
+    while(1) {
+        fin >> n >> m ;
+        if (fin.eof()){
+            break;
+        }
+        int depth = 0;
+        fout << endl << binomical(n, m, depth) << endl;
+        fout << "Depth: " << depth << endl;
+   
+    }
     fin.close();
     fout.close();
     return 0;
