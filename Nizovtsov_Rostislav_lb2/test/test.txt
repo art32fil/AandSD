@@ -1,0 +1,10 @@
+(OR a a a)
+
+(TRUE)
+(OR d (NOT d))
+(AND d (NOT d))
+(OR s (NOT b (NOT a)))
+(OR d (OR d (NOT a)))
+(NOT a (NOT FALSE))
+(OR TRUE (AND a))
+(AND q (AND FALSE (OR d)))
