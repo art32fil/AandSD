@@ -23,8 +23,6 @@ namespace h_list
     typedef s_expr *lisp;
 
 
-    void print_s_expr( lisp s );
-
     lisp head (const lisp s);
     lisp tail (const lisp s);
     lisp cons (const lisp h, const lisp t);
