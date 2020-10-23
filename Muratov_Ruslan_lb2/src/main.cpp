@@ -19,8 +19,6 @@ struct Pair {
 };
 
 struct SExpr {
-//  SExpr() {};
-//  ~SExpr() {};
   Type type;
   Pair pair;
   Base opOrArg;
@@ -125,7 +123,6 @@ void print(const LogicalExpr logExpr, std::ostream& os) {
     os << logExpr->opOrArg;
   } else if (isOper(logExpr)) {
     os << logExpr->opOrArg;
-//    os << "[" << hl->opOrArg << "]";
   } else {
     os << "(";
     printSeq(logExpr, os);
@@ -163,7 +160,6 @@ void readSExpr(Base prev, LogicalExpr& logExpr, std::istream& is) {
 void readSeq(LogicalExpr& logExpr, std::istream& is) {
   Base x;
   is >> x;
-//  std::string op;
   LogicalExpr le1, le2;
   if (is.eof()) {
     std::cerr << "Error: incorrect expression" << std::endl;
@@ -216,18 +212,18 @@ bool checkArgs(LogicalExpr logExpr, int8_t& counter, std::string opType, std::os
   int8_t oldVal = 0;
   if (isPair(logExpr)) {
     LogicalExpr h = head(logExpr);
-    if (isPair(h)) { // Операция
-      oldVal = counter + 1; // Учитываем аргумент, являющийся рез-том операции
+    if (isPair(h)) {
+      oldVal = counter + 1;
       bool correctnessNextOp = check(h, os);
       counter = oldVal;
       return correctnessNextOp && checkArgs(tail(logExpr), counter, opType, os);
-    } else if (h == nullptr) { // Пустые скобки
+    } else if (h == nullptr) {
       os << "Invalid expression: There is an empty brackets" << std::endl;
       return false;
-    } else { // Аргументы
+    } else {
       return checkArgs(tail(logExpr), ++counter, opType, os);
     }
-  } else { // Достигнут конец списка аргументов
+  } else {
     if (opType == "AND" || opType == "OR" || opType == "XOR")
       if (counter > 1)
         return true;
@@ -277,16 +273,6 @@ int main() {
   }
   std::ofstream outFile("out.txt");
   std::cout << "Result will be saved in out.txt" << std::endl;
-
-//  HList::read(logExpr, f);
-//  HList::print(logExpr, outFile);
-//  outFile << '\n';
-//  if (check(logExpr, outFile)) {
-//    outFile << "CORRECT\n";
-//  } else {
-//    outFile << "INCORRECT\n";
-//  }
-//  destroy(logExpr);
 
   std::string line;
 
