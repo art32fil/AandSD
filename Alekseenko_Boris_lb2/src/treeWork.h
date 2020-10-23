@@ -7,8 +7,9 @@
 
 class treeWork {
 public:
+	~treeWork();
 	void startReading();
-	void readBin(binTree* tree, char sym); // Взаимно рекурсивные
+	void readBin(binTree* tree, char sym); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	arm* readArm(arm* arm_);
 	void readBinFile(binTree* tree, char sym, std::ifstream& in);
 	arm* readArmFile(arm* arm_, std::ifstream& in);

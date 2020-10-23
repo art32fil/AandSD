@@ -14,6 +14,7 @@ arm* binTree::getLeft() {
 arm* binTree::getRight() {
 	return this->right;
 }
+
 binTree::~binTree() {
 	delete this->left;
 	delete this->right;

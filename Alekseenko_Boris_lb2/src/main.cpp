@@ -5,6 +5,7 @@ int main() {
 	tree.startReading();
 	tree.writeBin(tree.getTree());
 	std::cout << std::endl;
-	std::cout << "Weigth: " << tree.W(tree.getTree());
+	int weight = tree.W(tree.getTree());
+	std::cout << "Weight: " << weight << std::endl;  
 	return 0;
 }

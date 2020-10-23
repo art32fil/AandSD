@@ -23,7 +23,8 @@ void treeWork::startReading() {
 	case 'c': {
 		std::cout << "Enter input data" << std::endl;
 		char cur;
-		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+		char trash;
+		scanf("%c", &trash);
 		std::cin.get(cur);
 		binTree* tree = new binTree;
 		this->tree_ = tree;
@@ -239,4 +240,8 @@ void treeWork::tourArm(arm* arm_, int& level, unsigned int& weight_) {
 
 void treeWork::outPut(int level, int weight_, int allWeigth) {
 	std::cout << "depth: " << level << " length: " << " summ of weight: " << allWeigth << std::endl;
+}
+
+treeWork::~treeWork(){
+	delete this->tree_;
 }
