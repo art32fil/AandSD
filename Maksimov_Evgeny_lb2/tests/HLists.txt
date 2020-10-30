@@ -1,0 +1,250 @@
+
+	String #1
+Error!	Incorrect list string. Need 2 lists separated by space.
+
+	String #2
+Error!	Incorrect list string. Need 2 lists separated by space.
+
+	String #3
+Error!	Incorrect list string. Need 2 lists separated by space.
+
+	String #4
+=======
+List #1:
+	Sublist:
+		Sublist:
+Error!	Expected ')' symbol.
+Error!	List #1 has incorrect syntax.
+=======
+List #2:
+Error!	Unexpected sequence after brackets.
+Error!	List #2 has incorrect syntax.
+=======
+Lists are not comparable.
+
+	String #5
+=======
+List #1:
+	Sublist:
+	Symbol: a	depth: 1
+		Sublist:
+Error!	Expected ')' symbol.
+Error!	List #1 has incorrect syntax.
+=======
+List #2:
+Symbol: b	depth: 0
+Error!	Expected ')' symbol.
+Error!	List #2 has incorrect syntax.
+=======
+Lists are not comparable.
+
+	String #6
+=======
+List #1:
+Error!	Expected '(' symbol.
+Error!	List #1 has incorrect syntax.
+=======
+List #2:
+Error!	Expected '(' symbol.
+Error!	List #2 has incorrect syntax.
+=======
+Lists are not comparable.
+
+	String #7
+=======
+List #1:
+Error!	Expected '(' symbol.
+Error!	List #1 has incorrect syntax.
+=======
+List #2:
+Error!	Expected '(' symbol.
+Error!	List #2 has incorrect syntax.
+=======
+Lists are not comparable.
+
+	String #8
+=======
+List #1:
+	Sublist:
+		Sublist:
+		Symbol: a	depth: 2
+		Symbol: a	depth: 2
+		Symbol: a	depth: 2
+Error!	List must have unique data.
+Error!	List #1 has incorrect syntax.
+=======
+List #2:
+	Sublist:
+		Sublist:
+		Symbol: a	depth: 2
+		Symbol: b	depth: 2
+		Symbol: c	depth: 2
+		Symbol: d	depth: 2
+	Symbol: e	depth: 1
+	Symbol: f	depth: 1
+Symbol: b	depth: 0
+Symbol: d	depth: 0
+Error!	List must have unique data.
+Error!	List #2 has incorrect syntax.
+=======
+Lists are not comparable.
+
+	String #9
+=======
+List #1:
+Symbol: a	depth: 0
+=======
+List #2:
+Symbol: b	depth: 0
+=======
+Lists are NOT equal.
+
+	String #10
+=======
+List #1:
+	Sublist:
+	Symbol: a	depth: 1
+Symbol: b	depth: 0
+=======
+List #2:
+Symbol: b	depth: 0
+	Sublist:
+	Symbol: a	depth: 1
+=======
+Lists are NOT equal.
+
+	String #11
+=======
+List #1:
+Symbol: a	depth: 0
+Symbol: b	depth: 0
+Symbol: c	depth: 0
+Symbol: d	depth: 0
+Symbol: e	depth: 0
+Symbol: f	depth: 0
+=======
+List #2:
+Symbol: b	depth: 0
+Symbol: c	depth: 0
+Symbol: d	depth: 0
+Symbol: e	depth: 0
+=======
+Lists are NOT equal.
+
+	String #12
+=======
+List #1:
+Symbol: a	depth: 0
+	Sublist:
+	Symbol: b	depth: 1
+	Symbol: c	depth: 1
+		Sublist:
+		Symbol: d	depth: 2
+			Sublist:
+			Symbol: e	depth: 3
+		Symbol: f	depth: 2
+	Symbol: g	depth: 1
+	Symbol: h	depth: 1
+	Symbol: i	depth: 1
+		Sublist:
+		Symbol: l	depth: 2
+		Symbol: m	depth: 2
+			Sublist:
+			Symbol: n	depth: 3
+			Symbol: o	depth: 3
+Symbol: j	depth: 0
+Symbol: k	depth: 0
+=======
+List #2:
+Symbol: a	depth: 0
+	Sublist:
+	Symbol: b	depth: 1
+	Symbol: c	depth: 1
+		Sublist:
+		Symbol: d	depth: 2
+			Sublist:
+			Symbol: e	depth: 3
+		Symbol: f	depth: 2
+	Symbol: g	depth: 1
+	Symbol: h	depth: 1
+	Symbol: i	depth: 1
+Symbol: j	depth: 0
+Symbol: l	depth: 0
+=======
+Lists are NOT equal.
+
+	String #13
+=======
+List #1:
+Symbol: a	depth: 0
+Symbol: b	depth: 0
+Symbol: c	depth: 0
+Symbol: d	depth: 0
+Symbol: e	depth: 0
+Symbol: f	depth: 0
+=======
+List #2:
+Symbol: a	depth: 0
+Symbol: b	depth: 0
+Symbol: c	depth: 0
+Symbol: d	depth: 0
+Symbol: e	depth: 0
+Symbol: f	depth: 0
+=======
+Lists are equal.
+
+	String #14
+=======
+List #1:
+Symbol: a	depth: 0
+	Sublist:
+	Symbol: b	depth: 1
+	Symbol: c	depth: 1
+		Sublist:
+		Symbol: d	depth: 2
+			Sublist:
+			Symbol: e	depth: 3
+		Symbol: f	depth: 2
+	Symbol: g	depth: 1
+	Symbol: h	depth: 1
+	Symbol: i	depth: 1
+		Sublist:
+		Symbol: l	depth: 2
+		Symbol: m	depth: 2
+			Sublist:
+			Symbol: n	depth: 3
+			Symbol: o	depth: 3
+Symbol: j	depth: 0
+Symbol: k	depth: 0
+=======
+List #2:
+Symbol: a	depth: 0
+	Sublist:
+	Symbol: b	depth: 1
+	Symbol: c	depth: 1
+		Sublist:
+		Symbol: d	depth: 2
+			Sublist:
+			Symbol: e	depth: 3
+		Symbol: f	depth: 2
+	Symbol: g	depth: 1
+	Symbol: h	depth: 1
+	Symbol: i	depth: 1
+		Sublist:
+		Symbol: l	depth: 2
+		Symbol: m	depth: 2
+			Sublist:
+			Symbol: n	depth: 3
+			Symbol: o	depth: 3
+Symbol: j	depth: 0
+Symbol: k	depth: 0
+=======
+Lists are equal.
+
+	String #15
+=======
+List #1:
+=======
+List #2:
+=======
+Lists are equal.
