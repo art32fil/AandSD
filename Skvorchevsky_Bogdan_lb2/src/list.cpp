@@ -37,7 +37,7 @@ namespace list{
         if (topOfStack != nullptr) {
             topOfStack->hd = new base;
             *topOfStack->hd = x;
-            cout << "push -> " << x << endl;
+//            cout << "push -> " << x << endl;
             topOfStack->tl = p;
         }
         else {
