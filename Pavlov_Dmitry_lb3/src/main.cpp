@@ -37,7 +37,7 @@ public:
     }
 };
 
-void createForest(Node* a, std::string info, int& n) {
+void createForest(Node* a, const std::string info, int& n) {
 
     if(n >= info.length() || info[n]== '\0'){
         n++;
@@ -62,7 +62,7 @@ void createForest(Node* a, std::string info, int& n) {
 
 }
 
-void getLen(Node* head, int s, int& result){
+void getLen(const Node* head, const int s, int& result){
     if(head->getData() == '#'){
         return;
     }
@@ -75,7 +75,7 @@ void getLen(Node* head, int s, int& result){
     }
 }
 
-int getDeep(Node* head, int s) {
+int getDeep(const Node* head, const int s) {
     int x = 1;
     int r;
 
