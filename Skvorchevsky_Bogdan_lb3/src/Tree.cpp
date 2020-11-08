@@ -12,17 +12,13 @@ void Tree::read_tree(std::string& tree){
 
 std::shared_ptr<TreeNode> Tree::read_node(std::string& tree){
     std::shared_ptr<TreeNode> node = std::make_shared<TreeNode>();
-    int i = 0;
     if(tree.length() < 3){
         return nullptr;
     }
     if (tree.length() == 3){
         node->left = nullptr;
         node->right = nullptr;
-        do {
-            node->data = tree[i];
-            i++;
-        } while(!isalnum(node->data));
+        node->data = tree[1];
         return node;
     }
     std::stack<Elem> Stack;
@@ -46,14 +42,10 @@ std::shared_ptr<TreeNode> Tree::read_node(std::string& tree){
     }
     std::string left, right;
     left.insert(0, tree, index, cur_index-index+1);
-    right.insert(0, tree, cur_index+1, tree.length()-1-cur_index);
+    right.insert(0, tree, cur_index+1, tree.length()-2-cur_index);
     node->left = read_node(left);
     node->right = read_node(right);
-    i = 0;
-    do {
-        node->data = tree[i];
-        i++;
-    } while(!isalnum(node->data));
+    node->data = tree[1];
     return node;
 }
 
