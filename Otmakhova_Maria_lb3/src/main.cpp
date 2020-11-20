@@ -79,9 +79,11 @@ int main() {
         cout << '\n';
         if (bt->answer) {
             cout << "True" << endl;
+            cout << '\n';
         }
         else {
             cout << "False" << endl;
+            cout << '\n';
         }
         delete bt;
     }
