@@ -47,39 +47,12 @@ int main() {
     break;
   }
 
-//  int choice;
-//  bool flag = true;
-//  while (flag) {
-//    std::cout << "What do you want to do:\n1) Insert\n2) Remove\n3) Print\n4) Exit" << std::endl;
-//    std::cin >> choice;
-//    switch (choice) {
-//      case 1:
-//        std::cout << "Enter a element:" << std::endl;
-//        std::cin >> elem;
-//        avlt.insert(elem);
-//        break;
-//      case 2:
-//        std::cout << "Enter a element:" << std::endl;
-//        std::cin >> elem;
-//        avlt.remove(elem);
-//        break;
-//      case 3:
-//        avlt.printToConsole();
-//        break;
-//      case 4:
-//        flag = false;
-//        break;
-//      default:
-//        std::cout << "Incorrect input!" << std::endl;
-//        break;
-//    }
-//  }
-
   std::ofstream outDotFile("output.gv");
   std::ofstream outTextFile("infix_print.txt");
 
   avlt.printDot(outDotFile);
   avlt.printInfix(outTextFile);
+  avlt.printToConsole();
 
   return 0;
 }
