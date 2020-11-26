@@ -25,6 +25,8 @@ int main() {
       for (int i = 0; i < num; ++i) {
         std::cin >> elem;
         avlt.insert(elem);
+        std::cout << "After inserting " << elem << std::endl;
+        avlt.printToConsole();
       }
     } else if (is == File) {
       std::cout << "Enter file name: " << std::endl;
@@ -38,6 +40,8 @@ int main() {
       inFile >> elem;
       while (!inFile.eof()) {
         avlt.insert(elem);
+        std::cout << "After inserting " << elem << std::endl;
+        avlt.printToConsole();
         inFile >> elem;
       }
     } else {
@@ -52,6 +56,7 @@ int main() {
 
   avlt.printDot(outDotFile);
   avlt.printInfix(outTextFile);
+  std::cout << "Final result" << std::endl;
   avlt.printToConsole();
 
   return 0;
