@@ -1,0 +1,10 @@
+This is 1 iteration of sorting
+We will change this elements: 10(0) and 5(3)
+[5, 0, -2, 10]
+This is 2 iteration of sorting
+We will change this elements: 5(0) and -2(2)
+[-2, 0, 5, 10]
+This is 3 iteration of sorting
+[-2, 0, 5, 10]
+This is sorted array
+[-2, 0, 5, 10]
