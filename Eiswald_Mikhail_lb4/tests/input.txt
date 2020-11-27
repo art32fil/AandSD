@@ -1,0 +1,6 @@
+The best case; all indexes are different: 4 5 0 2 6 3 7 1
+All different indexes as well: -6 8 4 0 2 -3
+Repeating numbers: 2 1 2 1 5 7
+Repeating indexes, but not numbers: 23 5 1 8 17 11
+Worst case (n!): 1 2 6 24 120 720
+All equal: 2 2 2
