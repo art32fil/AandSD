@@ -73,12 +73,7 @@ int main() {
     do {
         std::cin >> x;
         if(isCorrect(x)){
-            if(x.at(0) == '-'){
-                std::string x_1 = x.substr(1,x.size()-1);
-                v.push_back(-atoi(x_1.c_str()));
-            }else{
-                v.push_back(atoi(x.c_str()));
-            }
+            v.push_back(atoi(x.c_str()));
             i++;
         }
     } while((tmp.find(x) + x.length()) != tmp.length());
