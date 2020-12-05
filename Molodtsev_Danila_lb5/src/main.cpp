@@ -7,11 +7,11 @@ using namespace std;
 typedef shared_ptr<CodesTree> pTree;
 
 class CodesTree  {
-    string data;
-    int sum;
+    string data="";
+    int sum=0;
     pTree left={nullptr};
     pTree right= {nullptr};
-    string code;
+    string code="";
 public:
     string& Get_Code(){
         return this->code;
@@ -49,9 +49,9 @@ public:
 };
 
 struct simbol{
-    int n;
+    int n=0;
     char c;
-    string code;
+    string code="";
 };
 
 static int index=0;
@@ -73,7 +73,7 @@ void DecodingProcess(pTree head,pTree fict,string& coded,string& decoded) {
 }
 
 string CodingProcess(simbol* array, string& str){
-    string res;
+    string res="";
     for(int i=0;i<str.length();i++){
         for(int j=31;j>0;j--){
             if(array[j].c==str[i]){
@@ -240,7 +240,7 @@ void PrintTree(pTree tree){
 }
 
 string Make_String(simbol* arr){
-    string res;
+    string res="";
     int ind=30;
     while(ind>=0){
         if(arr[ind].n>0){
@@ -256,7 +256,7 @@ string Make_String(simbol* arr){
 int main() {
     string path;
     int size=31;
-    cout<<"Enter decoded string:\n";
+    cout<<"Enter a message:\n";
     getline(cin, path,'\n');
     for(int i=0;i<path.length();i++){
         if(isdigit(path[i])){
@@ -280,10 +280,10 @@ int main() {
         }
     }
     string coded_str = CodingProcess(arr,path);
-    string decoded_str;
+    string decoded_str="";
     DecodingProcess(Bin_Tree,Bin_Tree,coded_str,decoded_str);
     cout<<"Coded message:\n"<<coded_str;
-    cout<<"\nDecooded message:\n"<<decoded_str;
+    cout<<"\nDecooded message:\n"<<decoded_str<<"\n";
     delete[] arr;
     //system("pause");
     return 0;
