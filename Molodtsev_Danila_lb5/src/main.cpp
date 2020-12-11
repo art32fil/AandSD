@@ -60,6 +60,9 @@ void DecodingProcess(pTree head,pTree fict,string& coded,string& decoded) {
     if (index <= coded.length()) {
         if (fict->Get_Data().length() == 1) {
             decoded += fict->Get_Data();
+            if(head->Get_Data().length()==1){
+                index++;
+            }
             DecodingProcess(head,head,coded,decoded);
         }
         if(coded[index]=='0'){
