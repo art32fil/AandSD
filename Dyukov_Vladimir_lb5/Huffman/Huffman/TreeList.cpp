@@ -210,7 +210,12 @@ void TreeList::printSymCode(std::ostream& out, char sym, bool first) {
 
 		if (first) {
 
-			out << sym;
+			int k = 128;
+			for (int i = 7; i > -1; i--) {
+
+				out << ((sym & k) >> i);
+				k = k >> 1;
+			}
 		}
 	}
 }
