@@ -1,6 +1,7 @@
 ﻿#include <fstream>
-#include "TreeList.h"
 #include <conio.h>
+#include "TreeList.h"
+#include "Define.h"
 
 bool get_enter(std::string str) {
 
@@ -59,7 +60,7 @@ int main() {
 			}
 
 			window.clear(sf::Color(160, 200, 255, 255));
-			huffman.drawTree(window, font, 1, *huffman.list.begin(), 0);
+			huffman.drawTree(window, font, 1, *huffman.list.begin(), TREE_CENT);
 			huffman.drawList(window, font);
 			window.display();
 		}

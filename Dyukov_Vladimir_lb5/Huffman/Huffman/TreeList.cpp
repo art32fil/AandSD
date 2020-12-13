@@ -1,5 +1,6 @@
 #include "TreeList.h"
 #include "Tree.h"
+#include "Define.h"
 
 std::string ItoS(int num) {
 
@@ -40,7 +41,7 @@ std::string ItoS(int num) {
 
 TreeList::TreeList() {
 
-	list.push_back(new Tree(0, 48, nullptr));
+	list.push_back(new Tree(0, '.', nullptr));
 }
 
 TreeList::~TreeList() {
@@ -63,9 +64,9 @@ void TreeList::add(char symb, std::ostream& out) {
 	if (new_symb) {
 
 		Tree* esc = *(--list.end());
-		esc->right = new Tree(symb, 49, esc);
+		esc->right = new Tree(symb, '1', esc);
 		(*esc->right)++;
-		esc->left = new Tree(0, 48, esc);
+		esc->left = new Tree(0, '0', esc);
 		list.push_back(esc->right);
 		list.push_back(esc->left);
 	}
@@ -121,59 +122,68 @@ void TreeList::rebuild() {
 
 void TreeList::drawTree(sf::RenderWindow& window, sf::Font& font, int depth, Tree* tree, int x_pos) {
 
-	if (tree->left) drawTree(window, font, depth + 1, tree->left, x_pos - 600 / pow(2, depth));
-	if (tree->right) drawTree(window, font, depth + 1, tree->right, x_pos + 600 / pow(2, depth));
-	sf::CircleShape circle;
-	circle.setFillColor(sf::Color::White);
-	circle.setRadius(30);
-	circle.setPosition(sf::Vector2f(600 + x_pos, depth * 90));
-	window.draw(circle);
+	if (tree->left) drawTree(window, font, depth + 1, tree->left, x_pos - TREE_CENT / pow(2, depth));
+	if (tree->right) drawTree(window, font, depth + 1, tree->right, x_pos + TREE_CENT / pow(2, depth));
+
+	sf::RectangleShape rect;
+	rect.setFillColor(sf::Color::White);
+	rect.setOutlineThickness(2);
+	rect.setOutlineColor(sf::Color::Black);
+	rect.setSize(sf::Vector2f(LEAF_SIZE, LEAF_SIZE));
+	rect.setPosition(sf::Vector2f(x_pos, depth * LEAF_STEP));
+	window.draw(rect);
 
 	sf::Text text;
+	text.setFont(font);
+	text.setCharacterSize(25);
+	text.setStyle(sf::Text::Bold);
+
 	text.setString(tree->data);
 	text.setFillColor(sf::Color::Black);
-	text.setFont(font);
-	text.setPosition(sf::Vector2f(620 + x_pos, 10 + depth * 90));
+	text.setPosition(sf::Vector2f(x_pos + 2, depth * LEAF_STEP));
 	window.draw(text);
 
 	text.setString(ItoS(tree->weight));
 	text.setFillColor(sf::Color::Red);
-	text.setFont(font);
-	text.setPosition(sf::Vector2f(610 + x_pos, 40 + depth * 90));
+	text.setPosition(sf::Vector2f(x_pos + 2, depth * LEAF_STEP + LEAF_SIZE / 2));
 	window.draw(text);
 
 	text.setString(tree->code);
-	text.setFillColor(sf::Color::Black);
-	text.setFont(font);
-	text.setPosition(sf::Vector2f(635 + x_pos, 40 + depth * 90));
+	text.setFillColor(sf::Color::Blue);
+	text.setPosition(sf::Vector2f(x_pos + 2 + LEAF_SIZE / 2, depth * LEAF_STEP));
 	window.draw(text);
 }
 
 void TreeList::drawList(sf::RenderWindow& window, sf::Font& font) {
 
-	sf::CircleShape circle;
-	circle.setFillColor(sf::Color::White);
-	circle.setRadius(30);
+	sf::RectangleShape rect;
+	rect.setFillColor(sf::Color::White);
+	rect.setOutlineThickness(2);
+	rect.setOutlineColor(sf::Color::Black);
+	rect.setSize(sf::Vector2f(LEAF_SIZE, LEAF_SIZE));
 
 	sf::Text text;
-	text.setFillColor(sf::Color::Black);
 	text.setFont(font);
+	text.setCharacterSize(25);
+	text.setStyle(sf::Text::Bold);
 
-	int j = 0;
+	int j = 5;
 	for (std::list<Tree*>::iterator i = list.begin(); i != list.end(); i++) {
 
-		circle.setPosition(sf::Vector2f(j, 810));
-		window.draw(circle);
+		rect.setPosition(sf::Vector2f(j, WIND_SIZE_H - LEAF_SIZE - 5));
+		window.draw(rect);
 
-		text.setPosition(sf::Vector2f(j + 15, 820));
+		text.setFillColor(sf::Color::Black);
+		text.setPosition(sf::Vector2f(j + 2, WIND_SIZE_H - LEAF_SIZE - 5));
 		text.setString((*i)->data);
 		window.draw(text);
 
-		text.setPosition(sf::Vector2f(j + 15, 850));
+		text.setFillColor(sf::Color::Red);
+		text.setPosition(sf::Vector2f(j + 2, WIND_SIZE_H - LEAF_SIZE / 2 - 5));
 		text.setString(ItoS((*i)->weight));
 		window.draw(text);
 
-		j += 70;
+		j += LEAF_SIZE + 5;
 	}
 }
 

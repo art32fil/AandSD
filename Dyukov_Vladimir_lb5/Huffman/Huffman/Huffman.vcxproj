@@ -147,6 +147,7 @@
     <ClCompile Include="TreeList.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Define.h" />
     <ClInclude Include="Tree.h" />
     <ClInclude Include="TreeList.h" />
   </ItemGroup>
