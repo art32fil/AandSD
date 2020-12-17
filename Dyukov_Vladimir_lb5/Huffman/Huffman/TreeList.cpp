@@ -94,6 +94,7 @@ void TreeList::rebuild() {
 			max->right = prev->right;
 			if (max->right) max->right->parent = max;
 			max->data = prev->data;
+			(*max)--;
 
 			// prev restore
 			prev->left = test.left;
@@ -101,14 +102,7 @@ void TreeList::rebuild() {
 			prev->right = test.right;
 			if (prev->right) prev->right->parent = prev;
 			prev->data = test.data;
-
-			// weight recount
-			int diff = max->weight - prev->weight;
-			for (int i = 0; i < diff; i++) {
-
-				(*max)--;
-				(*prev)++;
-			}
+			(*prev)++;
 
 			rebuild();
 
@@ -216,7 +210,7 @@ void TreeList::printSymCode(std::ostream& out, char sym, bool first) {
 			code[code.length() - i - 1] = reserve;
 		}
 
-		out << ' ' << code << ' ';
+		out << code;
 
 		if (first) {
 
