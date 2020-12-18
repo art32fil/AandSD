@@ -11,35 +11,29 @@ private:
     list<int> *table;
     int total_elements;
 
-    // Hash function to calculate hash for a value:
     [[nodiscard]] int getHash(int key) const{
         return key % total_elements;
     }
 
 public:
-    // Constructor to create a hash table with 'n' indices:
     explicit HashTable(int n){
         total_elements = n;
         table = new list<int>[total_elements];
     }
 
-    // Insert data in the hash table:
     void insertElement(int key){
         table[getHash(key)].push_back(key);
     }
 
-    // Remove data from the hash table:
     void removeElement(int key, ofstream &output){
         int x = getHash(key);
 
         list<int>::iterator i;
         for (i = table[x].begin(); i != table[x].end(); i++) {
-            // Check if the iterator points to the required item:
             if (*i == key)
                 break;
         }
 
-        // If the item was found in the list, then delete it:
         if (i != table[x].end())
             table[x].erase(i);
         else{
@@ -50,11 +44,9 @@ public:
     }
 
     void printAll(ofstream &output){
-        // Traverse each index:
         for(int i = 0; i < total_elements; i++){
             output << "Index " << i << ": ";
             cout << "Index " << i << ": ";
-            // Traverse the list at current index:
             for(int j : table[i]) {
                 output << j << " => ";
                 cout << j << " => ";
@@ -90,10 +82,8 @@ void checkStr(std::string& str) {
 
 int main() {
     vector<int> nums;
-    // Create a hash table with 3 indices:
     HashTable ht(5);
 
-    // Declare the data to be stored in the hash table:
     ifstream input("./tests/input.txt");
     ofstream output("./tests/result.txt");
     std::string numbers;
