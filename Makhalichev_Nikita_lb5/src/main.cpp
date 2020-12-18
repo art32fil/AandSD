@@ -1,3 +1,4 @@
+#include <map>
 #include <string>
 #include <sstream>
 #include <iostream>
@@ -30,6 +31,7 @@ class AVLTree{
 public:
     AVLTree();
     Node<T> *root;
+    std::map<T, int> counter;
     void Read();
     Node<T> *MakeNode(Node<T> *tree, T elem);
     Node<T> *Balance(Node<T> *tree);
@@ -40,7 +42,6 @@ public:
     Node<T> *RotateRight(Node<T> *tree);
     void Display(Node<T> *tree, int depth);
     void Find(Node<T> *tree, T elem);
-    int ElemQuantity(Node<T> *tree, T elem);
 };
 
 template<typename T>
@@ -65,12 +66,15 @@ void AVLTree<T>::Read(){
 template<typename T>
 Node<T> *AVLTree<T>::MakeNode(Node<T> *tree, T elem){
 	if (tree == NULL) {
+        counter[elem] = 1;
         return new Node<T>(elem);
 	} else if (elem < tree->key){
 		tree->left = MakeNode(tree->left, elem);
-	} else {
+	} else if (elem > tree->key){
 		tree->right = MakeNode(tree->right, elem);
-	}
+	} else {
+        counter.at(elem)++;
+    }
     return Balance(tree);
 }
 
@@ -93,14 +97,14 @@ Node<T> *AVLTree<T>::Balance(Node<T> *tree){
 template<typename T>
 Node<T> *AVLTree<T>::RotateLeft(Node<T> *tree){
     cout << "--Rotating left next part of tree:\n" << endl;
-    Display(tree, tree->height);
+    Display(tree, 0);
     Node<T> *newtree = tree->right;
     tree->right = newtree->left;
     newtree->left = tree;
     UpdateHeight(tree);
     UpdateHeight(newtree);
     cout << "\n--Part of tree after left rotating:\n" << endl;
-    Display(newtree, newtree->height);
+    Display(newtree, 0);
     cout << "\n-----------------------------------\n\n";
     return newtree;
 }
@@ -108,14 +112,14 @@ Node<T> *AVLTree<T>::RotateLeft(Node<T> *tree){
 template<typename T>
 Node<T> *AVLTree<T>::RotateRight(Node<T> *tree){
     cout << "--Rotating right next part of tree:\n" << endl;
-    Display(tree, tree->height);
+    Display(tree, 0);
     Node<T> *newtree = tree->left;
     tree->left = newtree->right;
     newtree->right = tree;
     UpdateHeight(tree);
     UpdateHeight(newtree);
     cout << "\n--Part of tree after right rotating:\n" << endl;
-    Display(newtree, newtree->height);
+    Display(newtree, 0);
     cout << "\n-----------------------------------\n\n";
     return newtree;
 }
@@ -140,11 +144,14 @@ void AVLTree<T>::UpdateHeight(Node<T> *tree){
 
 template<typename T>
 void AVLTree<T>::Display(Node<T> *tree, int depth){
+    for (int i = 0; i < depth; i++){
+        cout << ". ";
+    }
+    if (tree == NULL){
+        cout << "(empty)" << endl;
+    }
     if (tree != NULL){
-        for (int i = 0; i < depth; i++){
-            cout << ". ";
-        }
-        cout << tree->key << endl;
+        cout << tree->key << " (" << counter[tree->key] << ')' << endl;
         Display(tree->left, depth + 1);
         Display(tree->right, depth + 1);
     }
@@ -152,24 +159,13 @@ void AVLTree<T>::Display(Node<T> *tree, int depth){
 
 template<typename T>
 void AVLTree<T>::Find(Node<T> *tree, T elem){
-    int quantity = ElemQuantity(tree, elem);
-    if (quantity){
-        cout << "-This element is contained " << quantity << " time(s)" << std::endl;
+    if (counter[elem]){
+        cout << "-This element is contained " << counter[elem] << " time(s)" << std::endl;
     } else {
         cout << "-There is no element = " << elem << std::endl;
     }
-}
-
-template<typename T>
-int AVLTree<T>::ElemQuantity(Node<T> *tree, T elem){
-    if (tree != NULL){
-        if (tree->key == elem){
-            return 1 + ElemQuantity(tree->left, elem) + ElemQuantity(tree->right, elem);
-        } else {
-            return ElemQuantity(tree->left, elem) + ElemQuantity(tree->right, elem);
-        }
-    }
-    return 0;
+    cout << "-Inserting " << elem << "..." << endl;
+    root = MakeNode(root, elem);
 }
 
 int main(){
@@ -192,8 +188,6 @@ int main(){
             cin >> elem;
             cin.ignore();
             tree.Find(tree.root, elem);
-            cout << "-Inserting " << elem << "..." << endl;
-            tree.root = tree.MakeNode(tree.root, elem);
         }
     } while(continue_[0] != 'n');
     cout << "\n__FINAL_RESULT__" << endl;
