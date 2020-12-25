@@ -43,13 +43,16 @@ int main() {
 
 	std::ifstream in;
 	std::ofstream out;
+	std::ofstream out_t;
 	TreeList* huffman;
 	std::string str;
 	std::string empty[] = { "" };
 	std::string coding[] = { "Encode", "Decode" };
+	char sym;
 
 	while (1) {
 
+		sym = '~';
 		huffman = nullptr;
 
 		system("cls");
@@ -71,19 +74,23 @@ int main() {
 			std::cout << "\n\nEnter the file where the result will be saved:\n\n";
 			std::cin >> str;
 			out.open(str);
+			out_t.open(str + "_t.txt");
 		}
 
 		while (huffman && in.is_open() && out.is_open()) {
 
 			system("cls");
-			huffman->drawTree();
+			huffman->drawTree(std::cout, sym);
+			huffman->drawTree(out_t, sym);
 			button_get(empty, 0);
-			if (!huffman->add(in, out)) break;
+			sym = huffman->add(in, out);
+			if (!sym) break;
 		}
 
 		if (huffman) delete huffman;
 		if (in.is_open()) in.close();
 		if (out.is_open()) out.close();
+		if (out_t.is_open()) out_t.close();
 
 		std::cout << "\n\nPress 'Esc' to exit / 'Enter' to continue.\n";
 		if (!button_get(empty, 0)) break;

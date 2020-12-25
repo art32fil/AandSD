@@ -15,9 +15,9 @@ public:
 	TreeList();
 	virtual ~TreeList();
 
-	virtual bool add(std::istream&, std::ostream&) = 0;
+	virtual char add(std::istream&, std::ostream&) = 0;
 	void rebuild();
-	void drawTree();
+	void drawTree(std::ostream&, char);
 	virtual void print(std::ostream& out, char sym, bool first = false) = 0;
 };
 
@@ -26,7 +26,7 @@ class EncodeTreeList : public TreeList {
 public:
 	EncodeTreeList() : TreeList() {};
 
-	virtual bool add(std::istream&, std::ostream&);
+	virtual char add(std::istream&, std::ostream&);
 	virtual void print(std::ostream& out, char sym, bool first = false);
 };
 
@@ -35,6 +35,6 @@ class DecodeTreeList : public TreeList {
 public:
 	DecodeTreeList() : TreeList() {};
 
-	virtual bool add(std::istream&, std::ostream&);
+	virtual char add(std::istream&, std::ostream&);
 	virtual void print(std::ostream& out, char sym, bool first = false);
 };

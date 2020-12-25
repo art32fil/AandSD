@@ -89,7 +89,9 @@ void TreeList::rebuild() {
 	}
 }
 
-void TreeList::drawTree() {
+void TreeList::drawTree(std::ostream& out, char sym) {
+
+	out << "Binary tree, showing the code of the elements after adding: '" << sym << "'\n\n";
 
 	int tree_on_lvl = 1;
 	Tree** trees = new Tree*[1];
@@ -105,18 +107,19 @@ void TreeList::drawTree() {
 		for (int i = 0; i < tree_on_lvl; i++) {
 			
 
-			for (int j = 0; j < num; j++) std::cout << ' ';
+			for (int j = 0; j < num; j++) out << ' ';
 			if (trees[i] != nullptr) {
 
-				if (trees[i]->data == ESC) std::cout << "[~ ";
-				else std::cout << "[" << trees[i]->data << " ";
-				std::cout << trees[i]->weight << "] ";
+				if (trees[i]->data == ESC) out << "[~ ";
+				else out << "[" << trees[i]->data << " ";
+				out << trees[i]->weight << " ";
+				out << trees[i]->code << "]";
 			}
-			else std::cout << "      ";
-			for (int j = 0; j < num; j++) std::cout << ' ';
+			else out << "       ";
+			for (int j = 0; j < num; j++) out << ' ';
 		}
 		depth--;
-		std::cout << "\n\n\n";
+		out << "\n\n\n";
 
 		tree_on_lvl = tree_on_lvl * 2;
 		Tree** n_trees = new Tree * [tree_on_lvl];
@@ -132,16 +135,25 @@ void TreeList::drawTree() {
 		delete[] trees;
 		trees = n_trees;
 	}
+
+	out << "List of sorting elements: ";
+	for (std::list<Tree*>::iterator i = list.begin(); i != list.end(); i++) {
+
+		if ((*i)->data == ESC) out << "[~ " << (*i)->weight << "] ";
+		else out << "[" << (*i)->data << " " << (*i)->weight << "] ";
+	}
+
+	out << "\n\nHint: [symbol weight code] ; '~' - mean ESC\n\n\n\n";
 }
 
 // Encode
 
-bool EncodeTreeList::add(std::istream& in, std::ostream& out) {
+char EncodeTreeList::add(std::istream& in, std::ostream& out) {
 
 	bool new_symb = true;
 	char symb;
 	in.get(symb);
-	if (in.eof()) return false;
+	if (in.eof()) return 0;
 
 	for (std::list<Tree*>::iterator i = list.begin(); i != list.end(); i++)
 		if ((*i)->data == symb) {
@@ -163,7 +175,7 @@ bool EncodeTreeList::add(std::istream& in, std::ostream& out) {
 	print(out, symb, new_symb);
 	rebuild();
 
-	return true;
+	return symb;
 }
 
 void EncodeTreeList::print(std::ostream& out, char sym, bool first) {
@@ -211,7 +223,7 @@ void EncodeTreeList::print(std::ostream& out, char sym, bool first) {
 
 // Decode
 
-bool DecodeTreeList::add(std::istream& in, std::ostream& out) {
+char DecodeTreeList::add(std::istream& in, std::ostream& out) {
 
 	char res = 0;
 	Tree* tree = *list.begin();
@@ -219,7 +231,7 @@ bool DecodeTreeList::add(std::istream& in, std::ostream& out) {
 	while (tree && tree->left) {
 
 		in.get(res);
-		if (in.eof()) return false;
+		if (in.eof()) return 0;
 		switch (res) {
 		case 49:
 			tree = tree->right;
@@ -233,7 +245,7 @@ bool DecodeTreeList::add(std::istream& in, std::ostream& out) {
 		}
 	}
 
-	if (!tree) return false;
+	if (!tree) return 0;
 	if (tree->data != 0) (*tree)++;
 	else {
 
@@ -241,7 +253,7 @@ bool DecodeTreeList::add(std::istream& in, std::ostream& out) {
 		for (int i = 0; i < 8; i++) {
 
 			res = res * 2 + in.get() - 48;
-			if (in.eof()) return false;
+			if (in.eof()) return 0;
 		}
 
 		Tree* esc = *(--list.end());
@@ -256,7 +268,7 @@ bool DecodeTreeList::add(std::istream& in, std::ostream& out) {
 	print(out, tree->data, 0);
 	rebuild();
 
-	return true;
+	return tree->data;
 }
 
 void DecodeTreeList::print(std::ostream& out, char sym, bool first) {
