@@ -161,21 +161,17 @@ Node<T> *AVLTree<T>::RotateRight(Node<T> *tree){
 template<typename T>
 Node<T> *AVLTree<T>::Balance(Node<T> *tree){
     UpdateHeight(tree);
-    cout << " - New height is " << root->height << "\n";
-    if (file_output_){
-        output << " - New height is " << root->height << "\n";
-    }
     int balance_factor = BalanceFactor(tree);
     cout << " - Balance factor is " << balance_factor << "\n";
     if (file_output_){
         output << " - Balance factor is " << balance_factor << "\n";
     }
-	if (balance_factor == -2){
+	if (balance_factor <= -2){
 		if (BalanceFactor(tree->left) > 0)
 			tree->left = RotateLeft(tree->left);
 		return RotateRight(tree);
 	}
-	if (balance_factor == 2){
+	if (balance_factor >= 2){
 		if (BalanceFactor(tree->right) < 0)
 			tree->right = RotateRight(tree->right);
 		return RotateLeft(tree);
