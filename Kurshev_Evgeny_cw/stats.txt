@@ -1,0 +1,30 @@
+New data !!
+size	time qsort	time smooth sorting		sets
+50		5.73e-06		5.213e-05			100
+New data !!
+size	time qsort	time smooth sorting		sets
+100		1.224e-05		8.327e-05			100
+New data !!
+size	time qsort	time smooth sorting		sets
+200		2.93e-05		0.00015317			100
+New data !!
+size	time qsort	time smooth sorting		sets
+400		6.607e-05		0.00028848			100
+New data !!
+size	time qsort	time smooth sorting		sets
+800		0.00015328		0.00086419			100
+New data !!
+size	time qsort	time smooth sorting		sets
+1600	0.00034381		0.00158008			100
+New data !!
+size	time qsort	time smooth sorting		sets
+3200	0.00078284		0.00308934			100
+New data !!
+size	time qsort	time smooth sorting		sets
+6400	0.00165632		0.00617762			100
+New data !!
+size	time qsort	time smooth sorting		sets
+12800	0.00363666		0.0133494			100
+New data !!
+size	time qsort	time smooth sorting		sets
+25600	0.00982597		0.0291817			100
