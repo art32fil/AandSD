@@ -1,0 +1,12 @@
+<RCC>
+    <qresource prefix="/img">
+        <file>res/tree_l1.png</file>
+        <file>res/tree_l2.png</file>
+        <file>res/tree_l3.png</file>
+        <file>res/tree_l4.png</file>
+        <file>res/tree_r1.png</file>
+        <file>res/tree_r2.png</file>
+        <file>res/tree_r3.png</file>
+        <file>res/tree_r4.png</file>
+    </qresource>
+</RCC>
